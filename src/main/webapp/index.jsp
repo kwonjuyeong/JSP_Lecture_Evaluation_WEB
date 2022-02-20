@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ page import="java.io.PrintWriter"%>
+	<%@ page import="user.UserDAO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +14,31 @@
 	<link rel ="stylesheet" href = "./css/custom.css">
 </head>
 <body>
+
+	<%
+		String userID = null;
+		if(session.getAttribute("userID") != null) {
+			userID = (String) session.getAttribute("userID");
+		}
+		if(userID == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인을 해주세요.');");
+			script.println("location.href = 'userLogin.jsp'");
+			script.println("</script>");
+			script.close();	
+		}
+		boolean emailChecked = new UserDAO().getUserEmailChecked(userID);
+		if(emailChecked == false) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("location.href = 'emailSendConfirm.jsp'");
+			script.println("</script>");
+			script.close();		
+			return;
+		}
+	%>	
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="index.jsp">강의평가 웹 사이트</a> <!--  navbar-brand는보통 로고같은 곳에 많이 사용 -->
 		<button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -25,9 +52,19 @@
 				<li class ="nav-item dropdown">
 					<a class =  "nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">회원관리</a>
 					<div class = "dropdown-menu" aria-labelledby="dropdown">
-							<a class = "dropdown-item" href="#">로그인</a>
-							<a class = "dropdown-item" href="#">회원가입</a>
-							<a class = "dropdown-item" href="#">로그아웃</a>
+							<%
+							if(userID == null) {
+							%>
+							<a class = "dropdown-item" href="userLogin.jsp">로그인</a>
+							<a class = "dropdown-item" href="userJoin.jsp">회원가입</a>
+							<%
+								} else {
+							%>
+							<a class = "dropdown-item" href="userLogout.jsp">로그아웃</a>
+							
+							<%
+							}
+							%>
 					</div>
 				</li>
 			</ul>
@@ -299,7 +336,7 @@
 	</div>
 	
 	<footer class ="bg-dark mt-4 p-5 text-center" style = "color: #FFFFFF;">
-		 Copyright &copy;  2022 권주영 All Rights Reserved;
+		 Copyright &copy;  2022 권주영 All Rights Reserved
 	</footer>
 	
 	<!--  제이쿼리 자바스크립트 추가' -->
