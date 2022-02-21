@@ -44,8 +44,8 @@
 							<%
 							if(userID == null) {
 							%>
-							<a class = "dropdown-item active" href="userLogin.jsp">로그인</a>
-							<a class = "dropdown-item" href="userJoin.jsp">회원가입</a>
+							<a class = "dropdown-item " href="userLogin.jsp">로그인</a>
+							<a class = "dropdown-item active" href="userJoin.jsp">회원가입</a>
 							<%
 							} else {
 							%>

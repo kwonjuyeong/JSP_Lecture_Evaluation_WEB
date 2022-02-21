@@ -207,7 +207,7 @@
 								<div class = "form-row">
 									<div class = "form-group col -sm-4">
 										<label>수강 년도</label>
-										<select name ="lectueYear" class = "form-control">
+										<select name ="lectureYear" class = "form-control">
 												<option value ="2013">2013</option>
 												<option value ="2014">2014</option>
 												<option value ="2015">2015</option>
@@ -243,7 +243,7 @@
 								</div>
 							<div class ="form-group">
 									<label>제목</label>
-									<input type = "text" name ="evaluationTime" class = "form-control" maxlength="30">									
+									<input type = "text" name ="evaluationTitle" class = "form-control" maxlength="30">									
 							</div>	
 							<div class = "form-group">
 									<label>내용</label>
@@ -252,7 +252,7 @@
 							<div class = "form-row">
 								<div class = "form-group col -sm -3">
 									<label>교수강의력</label>
-									<select name = "totalScore" class = "form-control">
+									<select name = "lecturePower" class = "form-control">
 											<option value="A" selected>A</option>
 											<option value="B">B</option>
 											<option value="C">C</option>
@@ -263,7 +263,7 @@
 								<!-- 별점, 시험횟수 추가하기 -->
 								<div class = "form-group col -sm -3">
 									<label>난이도</label>
-									<select name = "totalScore" class = "form-control">
+									<select name = "lectureDifficult" class = "form-control">
 											<option value="상" selected>상</option>
 											<option value="중">중</option>
 											<option value="하" >하</option>
@@ -272,7 +272,7 @@
 								
 								<div class = "form-group col -sm -3">
 									<label>과제</label>
-									<select name = "totalScore" class = "form-control">
+									<select name = "lectureAssignment" class = "form-control">
 											<option value="쉬움" selected>적음</option>
 											<option value="보통">보통</option>
 											<option value="어려움" >많음</option>

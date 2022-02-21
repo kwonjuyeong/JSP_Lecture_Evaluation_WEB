@@ -40,7 +40,7 @@
 	// 사용자에게 보낼 메시지를 기입합니다.
 	String host = "http://localhost:8080/Lecture_Evaluation/";
 	//관리자 이메일(구글 이메일 계정 입력)
-	String from = "자신의 관리자 계정 입력";
+	String from = "email@gmail.com";
 	String to = userDAO.getUserEmail(userID);
 	String subject = "강의평가를 위한 이메일 확인 메일입니다.";
 	String content = "다음 링크에 접속하여 이메일 확인을 진행하세요." +
@@ -108,21 +108,10 @@
             <a class="nav-link dropdown-toggle" id="dropdown" data-toggle="dropdown">
               회원 관리
             </a>
-            <div class = "dropdown-menu" aria-labelledby="dropdown">
-							<%
-							if(userID == null) {
-							%>
-							<a class = "dropdown-item active" href="userLogin.jsp">로그인</a>
-							<a class = "dropdown-item" href="userJoin.jsp">회원가입</a>
-							<%
-							} else {
-							%>
-							<a class = "dropdown-item" href="userLogout.jsp">로그아웃</a>
-							<%
-							}
-							%>
-							
-					</div>
+            <div class = "dropdown-menu" aria-labelledby="dropdown">							
+					<a class = "dropdown-item" href="userLogin.jsp">로그인</a>	
+					<a class = "dropdown-item" href="userJoin.jsp">회원가입</a>						
+			</div>
           </li>
         </ul>
         <form action="./index.jsp" method="get" class="form-inline my-2 my-lg-0">
