@@ -21,17 +21,17 @@ public int write(EvaluationDTO evaluationDTO) {
 			
 			conn = DatabaseUtil.getConnection();
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1,evaluationDTO.getUserID());
-			pstmt.setString(2,evaluationDTO.getLectureName());
-			pstmt.setString(3,evaluationDTO.getProfessorName());
+			pstmt.setString(1,evaluationDTO.getUserID().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;")); //xxs방어 <script>공격으로부터 방어하기 위해 넣는 코드
+			pstmt.setString(2,evaluationDTO.getLectureName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(3,evaluationDTO.getProfessorName().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
 			pstmt.setInt(4,evaluationDTO.getLectureYear());
-			pstmt.setString(5,evaluationDTO.getSemesterDivide());
-			pstmt.setString(6,evaluationDTO.getLectureDivide());
-			pstmt.setString(7,evaluationDTO.getEvaluationTitle());
-			pstmt.setString(8,evaluationDTO.getEvaluationContent());
-			pstmt.setString(9,evaluationDTO.getLecturePower());
-			pstmt.setString(10,evaluationDTO.getLectureDifficult());
-			pstmt.setString(11,evaluationDTO.getLectureAssignment());
+			pstmt.setString(5,evaluationDTO.getSemesterDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(6,evaluationDTO.getLectureDivide().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(7,evaluationDTO.getEvaluationTitle().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(8,evaluationDTO.getEvaluationContent().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(9,evaluationDTO.getLecturePower().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(10,evaluationDTO.getLectureDifficult().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
+			pstmt.setString(11,evaluationDTO.getLectureAssignment().replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\r\n", "<br>;"));
 			return pstmt.executeUpdate();
 			
 		} catch(Exception e) {
