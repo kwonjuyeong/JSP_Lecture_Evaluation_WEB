@@ -56,7 +56,7 @@
 	// 사용자에게 보낼 메시지를 기입합니다.
 	String host = "http://localhost:8080/Lecture_Evaluation/";
 	//관리자 이메일(구글 이메일 계정 입력)
-	String from = "자신의이메일@gmail.com";
+	String from = "kjy1ho@gmail.com";
 	String to = userDAO.getUserEmail(userID);
 	String subject = "강의평가사이트에서 접수된 신고 메일입니다.";
 	String content = "신고자 : " + userID + "<br>제목 : " + reportTitle + "<br>신고 유형 : "+reportselect + "<br>내용 : "+reportContent;

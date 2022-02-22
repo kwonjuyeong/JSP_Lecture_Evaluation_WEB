@@ -97,9 +97,7 @@ public class EvaluationDTO {
 		}
 		
 		public EvaluationDTO(){
-			
-			
-			
+						
 			
 		}
 		
