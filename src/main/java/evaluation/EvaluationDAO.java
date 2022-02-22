@@ -47,7 +47,7 @@ public int write(EvaluationDTO evaluationDTO) {
 	}
 	
 		public ArrayList<EvaluationDTO> getList(String lectureDivide, String searchType, String search, int pageNumber){
-			if(lectureDivide.equals("전체"));{
+			if(lectureDivide.equals("전체")){
 					lectureDivide ="";					
 			}
 				ArrayList<EvaluationDTO> evaluationList = null;
@@ -59,18 +59,20 @@ public int write(EvaluationDTO evaluationDTO) {
 				try {
 					
 					if(searchType.equals("최신순")) {
-						SQL = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE ? "
-								+ "ORDER BY evaluationID DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
+						SQL = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE "
+								+ "? ORDER BY evaluationID DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
 					} else if(searchType.equals("추천순")) {
-						SQL = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE ? "
-								+ "ORDER BY likeCount DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
+						SQL = "SELECT * FROM EVALUATION WHERE lectureDivide LIKE ? AND CONCAT(lectureName, professorName, evaluationTitle, evaluationContent) LIKE"
+								+ "? ORDER BY likeCount DESC LIMIT " + pageNumber * 5 + ", " + pageNumber * 5 + 6;
 					}
 
 					
 					conn = DatabaseUtil.getConnection();
 					pstmt = conn.prepareStatement(SQL);
-					pstmt.setString(1,"%"+ lectureDivide + "%");
+					
+					pstmt.setString(1,"%"+ lectureDivide + "%"); //여기가 전공, 기타, 출력 부분인데...
 					pstmt.setString(2,"%"+ search + "%");
+					
 					rs = pstmt.executeQuery();
 					evaluationList = new ArrayList<EvaluationDTO>();
 				    while(rs.next()) {
